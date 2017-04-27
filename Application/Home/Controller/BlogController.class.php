@@ -21,8 +21,12 @@ class BlogController extends HomeController
 
 //            B('')
 //        var_dump($name);
-        var_dump($_GET['status']);
-        var_dump($_GET['id']);
+//        var_dump($_GET['status']);
+//        var_dump($_GET['id']);
+
+        $model = M('Repair');
+        dump($model);
+
     }
 
     public function read()
@@ -34,6 +38,13 @@ class BlogController extends HomeController
             $data = $blog->find($_GET['id']);
             var_dump($data);
         }
+    }
+
+    //空操作
+    public function _empty()
+    {
+        echo '空操作';
+        $this->index();
     }
 
     //使用行为

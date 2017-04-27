@@ -122,13 +122,13 @@
                         <td><?php echo ($repair["problem"]); ?></td>
                         <td><?php echo (time_format($repair["create_time"])); ?></td>
                         <td>
-                            <?php switch($repair["status"]): case "-1": ?>处理完成<?php break;?>
+                            <?php switch($repair["status"]): case "2": ?>处理完成<?php break;?>
                             <?php case "0": ?>未处理<?php break;?>
                             <?php case "1": ?>处理中<?php break; endswitch;?>
                         </td>
                         <td>
                             <?php if(($repair["status"]) == "0"): ?><a title="接受处理" href="<?php echo U('setstatus?id='.$repair['id'].'&status=1');?>" class="ajax-get">接受处理</a><?php endif; ?>
-                            <?php if(($repair["status"]) == "1"): ?><a title="处理完成" href="<?php echo U('setstatus?id='.$repair['id'].'&status=-1');?>" class="ajax-get">处理完成</a><?php endif; ?>
+                            <?php if(($repair["status"]) == "1"): ?><a title="处理完成" href="<?php echo U('setstatus?id='.$repair['id'].'&status=2');?>" class="ajax-get">处理完成</a><?php endif; ?>
                             <a title="编辑" href="<?php echo U('edit?id='.$repair['id']);?>">编辑</a>
                             <a class="confirm ajax-get" title="删除" href="<?php echo U('del?id='.$repair['id']);?>">删除</a>
                         </td>

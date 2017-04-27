@@ -41,7 +41,7 @@
                         <td>{$repair.create_time|time_format}</td>
                         <td>
                             <switch name="repair.status">
-                            <case value="-1">处理完成</case>
+                            <case value="2">处理完成</case>
                             <case value="0">未处理</case>
                             <case value="1">处理中</case>
                             </switch>
@@ -51,7 +51,7 @@
                                 <a title="接受处理" href="{:U('setstatus?id='.$repair['id'].'&status=1')}" class="ajax-get">接受处理</a>
                             </eq>
                             <eq name="repair.status" value="1">
-                                <a title="处理完成" href="{:U('setstatus?id='.$repair['id'].'&status=-1')}" class="ajax-get">处理完成</a>
+                                <a title="处理完成" href="{:U('setstatus?id='.$repair['id'].'&status=2')}" class="ajax-get">处理完成</a>
                             </eq>
                             <a title="编辑" href="{:U('edit?id='.$repair['id'])}">编辑</a>
                             <a class="confirm ajax-get" title="删除" href="{:U('del?id='.$repair['id'])}">删除</a>

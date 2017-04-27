@@ -21,7 +21,7 @@ class CenterController extends AdminController
         $model = M('repair');
         //实现分页的方法lists()
         $list = $this->lists('repair');
-        
+
         //分配视图
         $this->assign('list',$list);
         $this->assign('pid',$pid);
@@ -64,7 +64,7 @@ class CenterController extends AdminController
     {
         if (IS_POST){
             //实例化模型对象
-            $repair = D('repair');
+            $repair = D('Repair');
             //根据表单提交的post数据创建数据对象
             $data = $repair->create();
             if ($data){
@@ -72,7 +72,7 @@ class CenterController extends AdminController
                 if($repair->save()){
                     //记录行为
 
-                    $this->success('编辑成功',U('repair'));
+                    $this->success('编辑成功',U('Repair'));
                 }else{
                     $this->error($repair->getError());
                     $this->error('编辑失败');
@@ -82,7 +82,7 @@ class CenterController extends AdminController
             }
         }else{
             //根据id取出数据
-            $info = M('repair')->find($id);
+            $info = M('Repair')->find($id);
             if ($info == false){
                 $this->error('');
             }
@@ -103,7 +103,7 @@ class CenterController extends AdminController
             $this->error('请选择要操作的数据');
         }
 
-        if (M('repair')->where('id='.$id)->delete()){
+        if (M('Repair')->where('id='.$id)->delete()){
             $this->success('删除成功');
         }else{
             $this->error('删除失败');
@@ -113,7 +113,7 @@ class CenterController extends AdminController
     //处理状态
     public function setstatus($status = 0,$id=0){
         //实例化模型对象
-        $repair = M('repair');
+        $repair = M('Repair');
         $repair->status = $status;
         //更新状态
         if($repair->where('id='.$id)->save()){

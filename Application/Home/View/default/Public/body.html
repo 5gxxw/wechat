@@ -1,24 +1,59 @@
-<block name="header"></block>
-<div id="main-container" class="container">
-    <div class="row">
-        <block name="side">
-        <!-- 左侧 nav
-        ================================================== -->
-            <div class="span3 bs-docs-sidebar">
-                <block name="publish"></block>
-                <ul class="nav nav-list bs-docs-sidenav">
-                    {:W('Category/lists', array($category['id'], ACTION_NAME == 'index'))}
-                </ul>
+    <div class="container-fluid">
+        <div class="indexImg row">
+            <img src="__IMG__/index/index.png" width="100%" />
+        </div>
+        <div class="serviceList text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <a href="notice.html">
+                            <div class="indexLabel label-danger">
+                                <span class="glyphicon glyphicon-bullhorn"></span><br/>
+                                小区通知
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="service.html">
+                            <div class="indexLabel label-warning">
+                                <span class="glyphicon glyphicon-ok-circle"></span><br/>
+                                便民服务
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="online.html">
+                            <div class="indexLabel label-info">
+                                <span class="glyphicon glyphicon-heart-empty"></span><br/>
+                                在线报修
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="notice.html">
+                            <div class="indexLabel label-success">
+                                <span class="glyphicon glyphicon-briefcase"></span><br/>
+                                商家活动
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="zushou.html">
+                            <div class="indexLabel label-primary">
+                                <span class="glyphicon glyphicon-usd"></span><br/>
+                                小区租售
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="notice.html">
+                            <div class="indexLabel label-default">
+                                <span class="glyphicon glyphicon-apple"></span><br/>
+                                小区活动
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
-        </block>
-        <block name="body"></block>
+        </div>
     </div>
-</div>
-
-<script type="text/javascript">
-    $(function(){
-        $(window).resize(function(){
-            $("#main-container").css("min-height", $(window).height() - 343);
-        }).resize();
-    })
-</script>
