@@ -143,106 +143,153 @@
             
 
             
-	<!-- 标题 -->
-	<div class="main-title">
+	<script type="text/javascript" src="/Public/static/uploadify/jquery.uploadify.min.js"></script>
+	<div class="main-title cf">
 		<h2>
-		文档列表(<?php echo ($_total); ?>) [
-		<?php if(is_array($rightNav)): $i = 0; $__LIST__ = $rightNav;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$nav): $mod = ($i % 2 );++$i;?><a href="<?php echo U('article/index','cate_id='.$nav['id']);?>"><?php echo ($nav["title"]); ?></a>
+			新增<?php echo (get_document_model($info["model_id"],'title')); ?> [
+			<?php if(is_array($rightNav)): $i = 0; $__LIST__ = $rightNav;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$nav): $mod = ($i % 2 );++$i;?><a href="<?php echo U('article/index','cate_id='.$nav['id']);?>"><?php echo ($nav["title"]); ?></a>
 			<?php if(count($rightNav) > $i): ?><i class="ca"></i><?php endif; endforeach; endif; else: echo "" ;endif; ?>
-		<?php if(isset($article)): ?>：<a href="<?php echo U('article/index','cate_id='.$cate_id.'&pid='.$article['id']);?>"><?php echo ($article["title"]); ?></a><?php endif; ?>
-		]
-		<?php if(($allow) == "0"): ?>（该分类不允许发布内容）<?php endif; ?>
+			<?php if(isset($article)): ?>：<a href="<?php echo U('article/index','cate_id='.$info['category_id'].'&pid='.$article['id']);?>"><?php echo ($article["title"]); ?></a><?php endif; ?>
+			]
 		</h2>
 	</div>
+	<!-- 标签页导航 -->
+<div class="tab-wrap">
+	<ul class="tab-nav nav">
+		<?php $_result=parse_config_attr($model['field_group']);if(is_array($_result)): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$group): $mod = ($i % 2 );++$i;?><li data-tab="tab<?php echo ($key); ?>" <?php if(($key) == "1"): ?>class="current"<?php endif; ?>><a href="javascript:void(0);"><?php echo ($group); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+	</ul>
+	<div class="tab-content">
+	<!-- 表单 -->
+	<form id="form" action="<?php echo U('update');?>" method="post" class="form-horizontal">
+		<!-- 基础文档模型 -->
+		<?php $_result=parse_config_attr($model['field_group']);if(is_array($_result)): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$group): $mod = ($i % 2 );++$i;?><div id="tab<?php echo ($key); ?>" class="tab-pane <?php if(($key) == "1"): ?>in<?php endif; ?> tab<?php echo ($key); ?>">
+            <?php if(is_array($fields[$key])): $i = 0; $__LIST__ = $fields[$key];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$field): $mod = ($i % 2 );++$i; if($field['is_show'] == 1 || $field['is_show'] == 2): ?><div class="form-item cf">
+                    <label class="item-label"><?php echo ($field['title']); ?><span class="check-tips"><?php if(!empty($field['remark'])): ?>（<?php echo ($field['remark']); ?>）<?php endif; ?></span></label>
+                    <div class="controls">
+                        <?php switch($field["type"]): case "num": ?><input type="text" class="text input-medium" name="<?php echo ($field["name"]); ?>" value="<?php echo ($field["value"]); ?>"><?php break;?>
+                            <?php case "string": ?><input type="text" class="text input-large" name="<?php echo ($field["name"]); ?>" value="<?php echo ($field["value"]); ?>"><?php break;?>
+                            <?php case "textarea": ?><label class="textarea input-large">
+                                <textarea name="<?php echo ($field["name"]); ?>"><?php echo ($field["value"]); ?></textarea>
+                                </label><?php break;?>
+                            <?php case "datetime": ?><input type="text" name="<?php echo ($field["name"]); ?>" class="text input-large time" value="" placeholder="请选择时间" /><?php break;?>
+                            <?php case "bool": ?><select name="<?php echo ($field["name"]); ?>">
+                                    <?php $_result=parse_field_attr($field['extra']);if(is_array($_result)): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($key); ?>" <?php if(($field["value"]) == $key): ?>selected<?php endif; ?>><?php echo ($vo); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                                </select><?php break;?>
+                            <?php case "select": ?><select name="<?php echo ($field["name"]); ?>">
+                                    <?php $_result=parse_field_attr($field['extra']);if(is_array($_result)): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($key); ?>" <?php if(($field["value"]) == $key): ?>selected<?php endif; ?>><?php echo ($vo); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                                </select><?php break;?>
+                            <?php case "radio": $_result=parse_field_attr($field['extra']);if(is_array($_result)): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><label class="radio">
+                                    <input type="radio" value="<?php echo ($key); ?>" <?php if(($field["value"]) == $key): ?>checked<?php endif; ?> name="<?php echo ($field["name"]); ?>"><?php echo ($vo); ?>
+                                	</label><?php endforeach; endif; else: echo "" ;endif; break;?>
+                            <?php case "checkbox": $_result=parse_field_attr($field['extra']);if(is_array($_result)): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><label class="checkbox">
+                                    <input type="checkbox" value="<?php echo ($key); ?>" name="<?php echo ($field["name"]); ?>" <?php if(($field["value"]) == $key): ?>checked<?php endif; ?>><?php echo ($vo); ?>
+                                	</label><?php endforeach; endif; else: echo "" ;endif; break;?>
+                            <?php case "editor": ?><label class="textarea">
+                                <textarea name="<?php echo ($field["name"]); ?>"><?php echo ($field["value"]); ?></textarea>
+                                <?php echo hook('adminArticleEdit', array('name'=>$field['name'],'value'=>$field['value']));?>
+                                </label><?php break;?>
+                            <?php case "picture": ?><div class="controls">
+									<input type="file" id="upload_picture_<?php echo ($field["name"]); ?>">
+									<input type="hidden" name="<?php echo ($field["name"]); ?>" id="cover_id_<?php echo ($field["name"]); ?>"/>
+									<div class="upload-img-box">
+									<?php if(!empty($data[$field['name']])): ?><div class="upload-pre-item"><img src="<?php echo (get_cover($data[$field['name']],'path')); ?>"/></div><?php endif; ?>
+									</div>
+								</div>
+								<script type="text/javascript">
+								//上传图片
+							    /* 初始化上传插件 */
+								$("#upload_picture_<?php echo ($field["name"]); ?>").uploadify({
+							        "height"          : 30,
+							        "swf"             : "/Public/static/uploadify/uploadify.swf",
+							        "fileObjName"     : "download",
+							        "buttonText"      : "上传图片",
+							        "uploader"        : "<?php echo U('File/uploadPicture',array('session_id'=>session_id()));?>",
+							        "width"           : 120,
+							        'removeTimeout'	  : 1,
+							        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+							        "onUploadSuccess" : uploadPicture<?php echo ($field["name"]); ?>,
+							        'onFallback' : function() {
+							            alert('未检测到兼容版本的Flash.');
+							        }
+							    });
+								function uploadPicture<?php echo ($field["name"]); ?>(file, data){
+							    	var data = $.parseJSON(data);
+							    	var src = '';
+							        if(data.status){
+							        	$("#cover_id_<?php echo ($field["name"]); ?>").val(data.id);
+							        	src = data.url || '' + data.path
+							        	$("#cover_id_<?php echo ($field["name"]); ?>").parent().find('.upload-img-box').html(
+							        		'<div class="upload-pre-item"><img src="' + src + '"/></div>'
+							        	);
+							        } else {
+							        	updateAlert(data.info);
+							        	setTimeout(function(){
+							                $('#top-alert').find('button').click();
+							                $(that).removeClass('disabled').prop('disabled',false);
+							            },1500);
+							        }
+							    }
+								</script><?php break;?>
+                            <?php case "file": ?><div class="controls">
+									<input type="file" id="upload_file_<?php echo ($field["name"]); ?>">
+									<input type="hidden" name="<?php echo ($field["name"]); ?>" value="<?php echo ($data[$field['name']]); ?>"/>
+									<div class="upload-img-box">
+										<?php if(isset($data[$field['name']])): ?><div class="upload-pre-file"><span class="upload_icon_all"></span><?php echo ($data[$field['name']]); ?></div><?php endif; ?>
+									</div>
+								</div>
+								<script type="text/javascript">
+								//上传图片
+							    /* 初始化上传插件 */
+								$("#upload_file_<?php echo ($field["name"]); ?>").uploadify({
+							        "height"          : 30,
+							        "swf"             : "/Public/static/uploadify/uploadify.swf",
+							        "fileObjName"     : "download",
+							        "buttonText"      : "上传附件",
+							        "uploader"        : "<?php echo U('File/upload',array('session_id'=>session_id()));?>",
+							        "width"           : 120,
+							        'removeTimeout'	  : 1,
+							        "onUploadSuccess" : uploadFile<?php echo ($field["name"]); ?>,
+							        'onFallback' : function() {
+							            alert('未检测到兼容版本的Flash.');
+							        }
+							    });
+								function uploadFile<?php echo ($field["name"]); ?>(file, data){
+									var data = $.parseJSON(data);
+							        if(data.status){
+							        	var name = "<?php echo ($field["name"]); ?>";
+							        	$("input[name="+name+"]").val(data.data);
+							        	$("input[name="+name+"]").parent().find('.upload-img-box').html(
+							        		"<div class=\"upload-pre-file\"><span class=\"upload_icon_all\"></span>" + data.info + "</div>"
+							        	);
+							        } else {
+							        	updateAlert(data.info);
+							        	setTimeout(function(){
+							                $('#top-alert').find('button').click();
+							                $(that).removeClass('disabled').prop('disabled',false);
+							            },1500);
+							        }
+							    }
+								</script><?php break;?>
+                            <?php default: ?>
+                            <input type="text" class="text input-large" name="<?php echo ($field["name"]); ?>" value="<?php echo ($field["value"]); ?>"><?php endswitch;?>
+                    </div>
+                </div><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+        </div><?php endforeach; endif; else: echo "" ;endif; ?>
 
-	<!-- 按钮工具栏 -->
-	<div class="cf">
-		<div class="fl">
-			<div class="btn-group">
-				<?php if(($allow) > "0"): ?><button class="btn document_add" <?php if(count($model) == 1): ?>url="<?php echo U('article/add',array('cate_id'=>$cate_id,'pid'=>I('pid',0),'model_id'=>$model[0]));?>"<?php endif; ?>>新 增
-						<?php if(count($model) > 1): ?><i class="btn-arrowdown"></i><?php endif; ?>
-					</button>
-					<?php if(count($model) > 1): ?><ul class="dropdown nav-list">
-						<?php if(is_array($model)): $i = 0; $__LIST__ = $model;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li><a href="<?php echo U('article/add',array('cate_id'=>$cate_id,'model_id'=>$vo,'pid'=>I('pid',0)));?>"><?php echo (get_document_model($vo,'title')); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
-					</ul><?php endif; ?>
-				<?php else: ?>
-					<button class="btn disabled" >新 增
-						<?php if(count($model) > 1): ?><i class="btn-arrowdown"></i><?php endif; ?>
-					</button><?php endif; ?>
-			</div>
-            <button class="btn ajax-post" target-form="ids" url="<?php echo U("Article/setStatus",array("status"=>1));?>">启 用</button>
-			<button class="btn ajax-post" target-form="ids" url="<?php echo U("Article/setStatus",array("status"=>0));?>">禁 用</button>
-			<button class="btn ajax-post" target-form="ids" url="<?php echo U("Article/move");?>">移 动</button>
-			<button class="btn ajax-post" target-form="ids" url="<?php echo U("Article/copy");?>">复 制</button>
-			<button class="btn ajax-post" target-form="ids" hide-data="true" url="<?php echo U("Article/paste");?>">粘 贴</button>
-			<input type="hidden" class="hide-data" name="cate_id" value="<?php echo ($cate_id); ?>"/>
-			<input type="hidden" class="hide-data" name="pid" value="<?php echo ($pid); ?>"/>
-			<button class="btn ajax-post confirm" target-form="ids" url="<?php echo U("Article/setStatus",array("status"=>-1));?>">删 除</button>
-			<!-- <button class="btn document_add" url="<?php echo U('article/batchOperate',array('cate_id'=>$cate_id,'pid'=>I('pid',0)));?>">导入</button> -->
-			<button class="btn list_sort" url="<?php echo U('sort',array('cate_id'=>$cate_id,'pid'=>I('pid',0)),'');?>">排序</button>
+		<div class="form-item cf">
+			<button class="btn submit-btn ajax-post hidden" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+			<a class="btn btn-return" href="<?php echo U('article/index?cate_id='.$cate_id);?>">返 回</a>
+			<?php if(C('OPEN_DRAFTBOX') and (ACTION_NAME == 'add' or $info['status'] == 3)): ?><button class="btn save-btn" url="<?php echo U('article/autoSave');?>" target-form="form-horizontal" id="autoSave">
+				存草稿
+			</button><?php endif; ?>
+			<input type="hidden" name="id" value="<?php echo ((isset($info["id"]) && ($info["id"] !== ""))?($info["id"]):''); ?>"/>
+			<input type="hidden" name="pid" value="<?php echo ((isset($info["pid"]) && ($info["pid"] !== ""))?($info["pid"]):''); ?>"/>
+			<input type="hidden" name="model_id" value="<?php echo ((isset($info["model_id"]) && ($info["model_id"] !== ""))?($info["model_id"]):''); ?>"/>
+			<input type="hidden" name="category_id" value="<?php echo ((isset($info["category_id"]) && ($info["category_id"] !== ""))?($info["category_id"]):''); ?>">
 		</div>
-
-		<!-- 高级搜索 -->
-		<div class="search-form fr cf">
-			<div class="sleft">
-				<div class="drop-down">
-					<span id="sch-sort-txt" class="sort-txt" data="<?php echo ($status); ?>"><?php if(get_status_title($status) == ''): ?>所有<?php else: echo get_status_title($status); endif; ?></span>
-					<i class="arrow arrow-down"></i>
-					<ul id="sub-sch-menu" class="nav-list hidden">
-						<li><a href="javascript:;" value="">所有</a></li>
-						<li><a href="javascript:;" value="1">正常</a></li>
-						<li><a href="javascript:;" value="0">禁用</a></li>
-						<li><a href="javascript:;" value="2">待审核</a></li>
-					</ul>
-				</div>
-				<input type="text" name="title" class="search-input" value="<?php echo I('title');?>" placeholder="请输入标题文档">
-				<a class="sch-btn" href="javascript:;" id="search" url="<?php echo U('article/index','pid='.I('pid',0).'&cate_id='.$cate_id,false);?>"><i class="btn-search"></i></a>
-			</div>
-            <div class="btn-group-click adv-sch-pannel fl">
-                <button class="btn">高 级<i class="btn-arrowdown"></i></button>
-                <div class="dropdown cf">
-                	<div class="row">
-                		<label>更新时间：</label>
-                		<input type="text" id="time-start" name="time-start" class="text input-2x" value="" placeholder="起始时间" /> -
-                		<input type="text" id="time-end" name="time-end" class="text input-2x" value="" placeholder="结束时间" />
-                	</div>
-                	<div class="row">
-                		<label>创建者：</label>
-                		<input type="text" name="nickname" class="text input-2x" value="" placeholder="请输入用户名">
-                	</div>
-                </div>
-            </div>
-		</div>
+	</form>
 	</div>
-
-	<!-- 数据表格 -->
-    <div class="data-table">
-		<table>
-            <!-- 表头 -->
-            <thead>
-                <tr>
-                    <th class="row-selected row-selected">
-                        <input class="check-all" type="checkbox">
-                    </th>
-                    <?php if(is_array($list_grids)): $i = 0; $__LIST__ = $list_grids;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$field): $mod = ($i % 2 );++$i;?><th><?php echo ($field["title"]); ?></th><?php endforeach; endif; else: echo "" ;endif; ?>
-                </tr>
-            </thead>
-
-            <!-- 列表 -->
-            <tbody>
-                <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i;?><tr>
-                        <td><input class="ids" type="checkbox" value="<?php echo ($data['id']); ?>" name="ids[]"></td>
-                        <?php if(is_array($list_grids)): $i = 0; $__LIST__ = $list_grids;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$grid): $mod = ($i % 2 );++$i;?><td><?php echo get_list_field($data,$grid,$model_list);?></td><?php endforeach; endif; else: echo "" ;endif; ?>
-                    </tr><?php endforeach; endif; else: echo "" ;endif; ?>
-            </tbody>
-        </table>
-	</div>
-	<!-- 分页 -->
-    <div class="page">
-        <?php echo ($_page); ?>
-    </div>
 </div>
-
 
         </div>
         <div class="cont-ft">
@@ -343,86 +390,72 @@
 <script type="text/javascript" src="/Public/static/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="/Public/static/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script type="text/javascript">
+
+$('#submit').click(function(){
+	$('#form').submit();
+});
+
 $(function(){
-	//搜索功能
-	$("#search").click(function(){
-		var url = $(this).attr('url');
-		var status = $("#sch-sort-txt").attr("data");
-        var query  = $('.search-form').find('input').serialize();
-        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
-        query = query.replace(/^&/g,'');
-		if(status != ''){
-			query += 'status=' + status + "&" + query;
-        }
-        if( url.indexOf('?')>0 ){
-            url += '&' + query;
-        }else{
-            url += '?' + query;
-        }
-		window.location.href = url;
-	});
-
-	/* 状态搜索子菜单 */
-	$(".search-form").find(".drop-down").hover(function(){
-		$("#sub-sch-menu").removeClass("hidden");
-	},function(){
-		$("#sub-sch-menu").addClass("hidden");
-	});
-	$("#sub-sch-menu li").find("a").each(function(){
-		$(this).click(function(){
-			var text = $(this).text();
-			$("#sch-sort-txt").text(text).attr("data",$(this).attr("value"));
-			$("#sub-sch-menu").addClass("hidden");
-		})
-	});
-
-	//只有一个模型时，点击新增
-	$('.document_add').click(function(){
-		var url = $(this).attr('url');
-		if(url != undefined && url != ''){
-			window.location.href = url;
-		}
-	});
-
-	//点击排序
-	$('.list_sort').click(function(){
-		var url = $(this).attr('url');
-		var ids = $('.ids:checked');
-		var param = '';
-		if(ids.length > 0){
-			var str = new Array();
-			ids.each(function(){
-				str.push($(this).val());
-			});
-			param = str.join(',');
-		}
-
-		if(url != undefined && url != ''){
-			window.location.href = url + '/ids/' + param;
-		}
-	});
-
-    //回车自动提交
-    $('.search-form').find('input').keyup(function(event){
-        if(event.keyCode===13){
-            $("#search").click();
-        }
-    });
-
-    $('#time-start').datetimepicker({
-        format: 'yyyy-mm-dd',
+    $('.time').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii',
         language:"zh-CN",
-	    minView:2,
-	    autoclose:true
+        minView:2,
+        autoclose:true
+    });
+    showTab();
+
+	<?php if(C('OPEN_DRAFTBOX') and (ACTION_NAME == 'add' or $info['status'] == 3)): ?>//保存草稿
+	var interval;
+	$('#autoSave').click(function(){
+        var target_form = $(this).attr('target-form');
+        var target = $(this).attr('url')
+        var form = $('.'+target_form);
+        var query = form.serialize();
+        var that = this;
+
+        $(that).addClass('disabled').attr('autocomplete','off').prop('disabled',true);
+        $.post(target,query).success(function(data){
+            if (data.status==1) {
+                updateAlert(data.info ,'alert-success');
+                $('input[name=id]').val(data.data.id);
+            }else{
+                updateAlert(data.info);
+            }
+            setTimeout(function(){
+                $('#top-alert').find('button').click();
+                $(that).removeClass('disabled').prop('disabled',false);
+            },1500);
+        })
+
+        //重新开始定时器
+        clearInterval(interval);
+        autoSaveDraft();
+        return false;
     });
 
-    $('#time-end').datetimepicker({
-        format: 'yyyy-mm-dd',
-        language:"zh-CN",
-	    minView:2,
-	    autoclose:true
-    });
-})
+	//Ctrl+S保存草稿
+	$('body').keydown(function(e){
+		if(e.ctrlKey && e.which == 83){
+			$('#autoSave').click();
+			return false;
+		}
+	});
+
+	//每隔一段时间保存草稿
+	function autoSaveDraft(){
+		interval = setInterval(function(){
+			//只有基础信息填写了，才会触发
+			var title = $('input[name=title]').val();
+			var name = $('input[name=name]').val();
+			var des = $('textarea[name=description]').val();
+			if(title != '' || name != '' || des != ''){
+				$('#autoSave').click();
+			}
+		}, 1000*parseInt(<?php echo C('DRAFT_AOTOSAVE_INTERVAL');?>));
+	}
+	autoSaveDraft();<?php endif; ?>
+
+});
 </script>
 
 </body>

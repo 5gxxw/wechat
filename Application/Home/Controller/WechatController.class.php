@@ -5,16 +5,23 @@
 
 namespace Home\Controller;
 
-use EasyWeChat\Foundation\Application;
 
-include __DIR__ . '/vendor/autoload.php'; // 引入 composer 入口文件
-class WeChatController extends HomeController
+use EasyWeChat\Foundation\Application;
+use Think\Controller;
+
+include './vendor/autoload.php'; // 引入 composer 入口文件
+class WechatController extends Controller
 {
     public function index(){
+//        echo I('get.echostr');
+        // 使用配置来初始化一个项目。
         $app = new Application(C('WE_CHAT'));
+
         $response = $app->server->serve();
+
         // 将响应输出
         $response->send(); // Laravel 里请使用：return $response;
+
     }
 
 

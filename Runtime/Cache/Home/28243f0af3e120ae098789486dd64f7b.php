@@ -47,45 +47,33 @@
 
 	<!-- 主体 -->
 	
-<section>
-	<div class="span12">
-        <form class="login-form" action="/index.php/Home/User/login.html" method="post">
-          <div class="control-group">
-            <label class="control-label" for="inputEmail">用户名</label>
-            <div class="controls">
-              <input type="text" id="inputEmail" class="span3" placeholder="请输入用户名"  ajaxurl="/member/checkUserNameUnique.html" errormsg="请填写1-16位用户名" nullmsg="请填写用户名" datatype="*1-16" value="" name="username">
+    <div class="container">
+        <div class="blank"></div>
+        <div class="row">
+            <div class="col-xs-3">
+                <img src="/Public/Home/images/5.png" width="60" height="60" />
             </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="inputPassword">密码</label>
-            <div class="controls">
-              <input type="password" id="inputPassword"  class="span3" placeholder="请输入密码"  errormsg="密码为6-20位" nullmsg="请填写密码" datatype="*6-20" name="password">
+            <div class="col-xs-9">
+                <?php echo ($user_info['username']); ?><br/>
+                北大花园小区<br/>
+                积分:<span class="text-danger">100</span>
             </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="inputPassword">验证码</label>
-            <div class="controls">
-              <input type="text" id="inputPassword" class="span3" placeholder="请输入验证码"  errormsg="请填写5位验证码" nullmsg="请填写验证码" datatype="*5-5" name="verify">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label"></label>
-            <div class="controls">
-                <img class="verifyimg reloadverify" alt="点击切换" src="<?php echo U('verify');?>" style="cursor:pointer;">
-            </div>
-            <div class="controls Validform_checktip text-warning"></div>
-          </div>
-          <div class="control-group">
-            <div class="controls">
-              <label class="checkbox">
-                <input type="checkbox"> 自动登陆
-              </label>
-              <button type="submit" class="btn">登 陆</button>
-            </div>
-          </div>
-        </form>
-	</div>
-</section>
+        </div>
+        <div class="blank"></div>
+        <div class="row text-center myLabel">
+            <div class="col-xs-4 label-danger"><a href="#"><span class="iconfont">&#xe60b;</span>我的资料</a></div>
+            <div class="col-xs-4 label-success"><a href="#"><span class="iconfont">&#xe609;</span>我的报修</a></div>
+            <div class="col-xs-4 label-primary"><a href="#"><span class="iconfont">&#xe606;</span>报名的活动</a></div>
+        </div>
+        <div class="blank"></div>
+        <div>
+            <ul class="list-group fuwuList">
+                <li class="list-group-item"><a href="diaochawenjuan.html" class="text-danger"><span class="iconfont">&#xe60a;</span>我的缴费账单</a> </li>
+                <li class="list-group-item"><a href="yezhurenzheng.html" class="text-info"><span class="iconfont">&#xe608;</span>我的物业通知</a></li>
+                <li class="list-group-item"><a href="yezhurenzheng.html" class="text-info"><span class="iconfont">&#xe607;</span>我的水电气使用</a></li>
+            </ul>
+        </div>
+    </div>
 
 	<!-- /主体 -->
 

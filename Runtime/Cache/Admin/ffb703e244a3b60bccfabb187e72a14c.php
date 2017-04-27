@@ -146,7 +146,7 @@
 	<!-- 标题 -->
 	<div class="main-title">
 		<h2>
-		文档列表(<?php echo ($_total); ?>) [
+		子文档列表(<?php echo ($_total); ?>) [
 		<?php if(is_array($rightNav)): $i = 0; $__LIST__ = $rightNav;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$nav): $mod = ($i % 2 );++$i;?><a href="<?php echo U('article/index','cate_id='.$nav['id']);?>"><?php echo ($nav["title"]); ?></a>
 			<?php if(count($rightNav) > $i): ?><i class="ca"></i><?php endif; endforeach; endif; else: echo "" ;endif; ?>
 		<?php if(isset($article)): ?>：<a href="<?php echo U('article/index','cate_id='.$cate_id.'&pid='.$article['id']);?>"><?php echo ($article["title"]); ?></a><?php endif; ?>
@@ -159,7 +159,7 @@
 	<div class="cf">
 		<div class="fl">
 			<div class="btn-group">
-				<?php if(($allow) > "0"): ?><button class="btn document_add" <?php if(count($model) == 1): ?>url="<?php echo U('article/add',array('cate_id'=>$cate_id,'pid'=>I('pid',0),'model_id'=>$model[0]));?>"<?php endif; ?>>新 增
+				<?php if(($allow) == "1"): ?><button class="btn" id="document_add" <?php if(count($model) == 1): ?>url="<?php echo U('article/add',array('cate_id'=>$cate_id,'pid'=>I('pid',0),'model_id'=>$model[0]));?>"<?php endif; ?>>新 增
 						<?php if(count($model) > 1): ?><i class="btn-arrowdown"></i><?php endif; ?>
 					</button>
 					<?php if(count($model) > 1): ?><ul class="dropdown nav-list">
@@ -172,14 +172,9 @@
 			</div>
             <button class="btn ajax-post" target-form="ids" url="<?php echo U("Article/setStatus",array("status"=>1));?>">启 用</button>
 			<button class="btn ajax-post" target-form="ids" url="<?php echo U("Article/setStatus",array("status"=>0));?>">禁 用</button>
-			<button class="btn ajax-post" target-form="ids" url="<?php echo U("Article/move");?>">移 动</button>
-			<button class="btn ajax-post" target-form="ids" url="<?php echo U("Article/copy");?>">复 制</button>
-			<button class="btn ajax-post" target-form="ids" hide-data="true" url="<?php echo U("Article/paste");?>">粘 贴</button>
 			<input type="hidden" class="hide-data" name="cate_id" value="<?php echo ($cate_id); ?>"/>
 			<input type="hidden" class="hide-data" name="pid" value="<?php echo ($pid); ?>"/>
 			<button class="btn ajax-post confirm" target-form="ids" url="<?php echo U("Article/setStatus",array("status"=>-1));?>">删 除</button>
-			<!-- <button class="btn document_add" url="<?php echo U('article/batchOperate',array('cate_id'=>$cate_id,'pid'=>I('pid',0)));?>">导入</button> -->
-			<button class="btn list_sort" url="<?php echo U('sort',array('cate_id'=>$cate_id,'pid'=>I('pid',0)),'');?>">排序</button>
 		</div>
 
 		<!-- 高级搜索 -->
@@ -195,7 +190,7 @@
 						<li><a href="javascript:;" value="2">待审核</a></li>
 					</ul>
 				</div>
-				<input type="text" name="title" class="search-input" value="<?php echo I('title');?>" placeholder="请输入标题文档">
+				<input type="text" name="content" class="search-input" value="<?php echo I('content');?>" placeholder="请输入内容关键字">
 				<a class="sch-btn" href="javascript:;" id="search" url="<?php echo U('article/index','pid='.I('pid',0).'&cate_id='.$cate_id,false);?>"><i class="btn-search"></i></a>
 			</div>
             <div class="btn-group-click adv-sch-pannel fl">
@@ -204,12 +199,15 @@
                 	<div class="row">
                 		<label>更新时间：</label>
                 		<input type="text" id="time-start" name="time-start" class="text input-2x" value="" placeholder="起始时间" /> -
-                		<input type="text" id="time-end" name="time-end" class="text input-2x" value="" placeholder="结束时间" />
+                        <div class="input-append date" id="datetimepicker" style="display:inline-block">
+                            <input type="text" id="time-end" name="time-end" class="text input-2x" value="" placeholder="结束时间"/>
+                            <span class="add-on"><i class="icon-th"></i></span>
+                        </div>
                 	</div>
-                	<div class="row">
-                		<label>创建者：</label>
-                		<input type="text" name="nickname" class="text input-2x" value="" placeholder="请输入用户名">
-                	</div>
+                    <!-- <div class="row"> -->
+                        <!-- <label>创建者：</label> -->
+                        <!-- <input type="text" name="username" class="text input-2x" value="" placeholder="请输入用户名"> -->
+                    <!-- </div> -->
                 </div>
             </div>
 		</div>
@@ -217,31 +215,38 @@
 
 	<!-- 数据表格 -->
     <div class="data-table">
-		<table>
-            <!-- 表头 -->
-            <thead>
-                <tr>
-                    <th class="row-selected row-selected">
-                        <input class="check-all" type="checkbox">
-                    </th>
-                    <?php if(is_array($list_grids)): $i = 0; $__LIST__ = $list_grids;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$field): $mod = ($i % 2 );++$i;?><th><?php echo ($field["title"]); ?></th><?php endforeach; endif; else: echo "" ;endif; ?>
-                </tr>
-            </thead>
-
-            <!-- 列表 -->
-            <tbody>
-                <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i;?><tr>
-                        <td><input class="ids" type="checkbox" value="<?php echo ($data['id']); ?>" name="ids[]"></td>
-                        <?php if(is_array($list_grids)): $i = 0; $__LIST__ = $list_grids;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$grid): $mod = ($i % 2 );++$i;?><td><?php echo get_list_field($data,$grid,$model_list);?></td><?php endforeach; endif; else: echo "" ;endif; ?>
-                    </tr><?php endforeach; endif; else: echo "" ;endif; ?>
-            </tbody>
-        </table>
+		<table class="">
+			<thead>
+				<tr>
+				<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+				<th class="">编号</th>
+				<th class="">内容</th>
+				<th class="">创建者</th>
+				<th class="">最后更新</th>
+				<th class="">状态</th>
+				<th class="">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+					<td><input class="ids" type="checkbox" name="ids[]" value="<?php echo ($vo["id"]); ?>" /></td>
+					<td><?php echo ($vo["id"]); ?> </td>
+					<td><a href="<?php echo U('Article/index?cate_id='.$vo['category_id'].'&pid='.$vo['id']);?>"><?php echo mb_strimwidth($vo['content'],0,50,"...","utf-8");?></a></td>
+					<td><span><?php echo get_username($vo['uid']);?></span></td>
+					<td><span><?php echo (time_format($vo["update_time"])); ?></span></td>
+					<td><?php echo ($vo["status_text"]); ?></td>
+					<td><a href="<?php echo U('Article/edit?cate_id='.$vo['category_id'].'&id='.$vo['id']);?>">编辑</a>
+						<a href="<?php echo U('Article/setStatus?ids='.$vo['id'].'&status='.abs(1-$vo['status']));?>" class="ajax-get"><?php echo (show_status_op($vo["status"])); ?></a>
+						<a href="<?php echo U('Article/setStatus?status=-1&ids='.$vo['id']);?>" class="confirm ajax-get">删除</a>
+						</td>
+				</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+			</tbody>
+		</table>
 	</div>
 	<!-- 分页 -->
     <div class="page">
         <?php echo ($_page); ?>
     </div>
-</div>
 
 
         </div>
@@ -377,28 +382,10 @@ $(function(){
 	});
 
 	//只有一个模型时，点击新增
-	$('.document_add').click(function(){
+	$('#document_add').click(function(){
 		var url = $(this).attr('url');
 		if(url != undefined && url != ''){
 			window.location.href = url;
-		}
-	});
-
-	//点击排序
-	$('.list_sort').click(function(){
-		var url = $(this).attr('url');
-		var ids = $('.ids:checked');
-		var param = '';
-		if(ids.length > 0){
-			var str = new Array();
-			ids.each(function(){
-				str.push($(this).val());
-			});
-			param = str.join(',');
-		}
-
-		if(url != undefined && url != ''){
-			window.location.href = url + '/ids/' + param;
 		}
 	});
 
@@ -416,12 +403,13 @@ $(function(){
 	    autoclose:true
     });
 
-    $('#time-end').datetimepicker({
-        format: 'yyyy-mm-dd',
+    $('#datetimepicker').datetimepicker({
+       format: 'yyyy-mm-dd',
         language:"zh-CN",
-	    minView:2,
-	    autoclose:true
-    });
+        minView:2,
+        autoclose:true,
+        pickerPosition:'bottom-left'
+    })
 })
 </script>
 

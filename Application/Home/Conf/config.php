@@ -62,6 +62,8 @@ return array(
         '__IMG__'    => __ROOT__ . '/Public/' . MODULE_NAME . '/images',
         '__CSS__'    => __ROOT__ . '/Public/' . MODULE_NAME . '/css',
         '__JS__'     => __ROOT__ . '/Public/' . MODULE_NAME . '/js',
+        '__BT__'     => __ROOT__ . '/Public/' . MODULE_NAME . '/bootstrap',
+        '__FONT__'     => __ROOT__ . '/Public/' . MODULE_NAME . '/font',
     ),
 
     /* SESSION 和 COOKIE 配置 */
@@ -95,16 +97,7 @@ return array(
         'callback' => false, //检测文件是否存在回调函数，如果存在返回文件信息数组
     ), //附件上传配置（文件上传类配置）
 
-//    // 开启路由
-//    'URL_ROUTER_ON'   => true,
-//    //配置路由规则
-//    'URL_ROUTE_RULES'=>array(
-//        'blog/index/:status\d|md5' => array('home/blog/index','id=4'),
-//        'blog/read/:id\d'               => ['home/blog/read'],
-//        //'news/read/:id'          => '/news/:1',
-//    ),
-//    //伪静态设置
-//    'URL_HTML_SUFFIX' => 'html',
+
 
     'WE_CHAT' => [
         /**
@@ -118,7 +111,7 @@ return array(
          */
         'app_id'  => 'wx41f0f1a601dd4894',         // AppID
         'secret'  => '5daaab71b4dd52241aa3314faf2ce9c7',     // AppSecret
-        'token'   => 'weixin',          // Token
+        'token'   => 'wechat',          // Token
         'aes_key' => 'EncodingAESKey',                    // EncodingAESKey，安全模式下请一定要填写！！！
         /**
          * 日志配置
