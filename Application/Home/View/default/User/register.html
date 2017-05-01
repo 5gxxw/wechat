@@ -1,70 +1,56 @@
-<extend name="Base/common" />
-<block name="header">
-<header class="jumbotron subhead" id="overview">
-  <div class="container">
-    <h2>用户注册</h2>
-    <p><span><span class="pull-left"><span>已经有账号? <a href="{:U('User/login')}">点此登录</a> </span> </span></p>
+<extend name="Base/base" />
+<block name="content">
+  <div class="container-fluid">
+    <form class="login-form" action="__SELF__" method="post">
+      <h2 class="form-signin-heading">用户注册</h2>
+      <p>
+        <label for="inputUsername" class="sr-only">用户名</label>
+        <input type="text" name="username" id="inputUsername" class="form-control" placeholder="用户名" required autofocus>
+      </p>
+      <p>
+        <label for="inputPassword" class="sr-only">密码</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required>
+      </p>
+      <p>
+        <label for="inputrePassword" class="sr-only">确认密码</label>
+        <input type="password" name="repassword" id="inputrePassword" class="form-control" placeholder="确认密码" required>
+      </p>
+      <p>
+        <label for="inputEmail" class="sr-only">邮箱</label>
+        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="邮箱" required>
+      </p>
+      <p>
+        <label for="inputCaptcha" class="sr-only">验证码</label>
+        <input type="text" name="verify" id="inputCaptcha" class="form-control" placeholder="请输入验证码" required>
+      </p>
+      <div class="controls" style="margin-bottom: 20px;">
+        <img class="verifyimg reloadverify" alt="点击切换" src="{:U('verify')}" style="cursor:pointer;">
+      </div>
+      <div class="controls Validform_checktip text-warning"></div>
+      <p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+      </p>
+    </form>
+    <p class="text-right"><a href="{:U('User/login')}">已有账号，直接登录</a></p>
   </div>
-</header>
-</block>
-
-<block name="body">
-
-<section>
-	<div class="span12">
-        <form class="login-form" action="__SELF__" method="post">
-          <div class="control-group">
-            <label class="control-label" for="inputEmail">用户名</label>
-            <div class="controls">
-              <input type="text" id="inputEmail" class="span3" placeholder="请输入用户名"  ajaxurl="/member/checkUserNameUnique.html" errormsg="请填写1-16位用户名" nullmsg="请填写用户名" datatype="*1-16" value="" name="username">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="inputPassword">密码</label>
-            <div class="controls">
-              <input type="password" id="inputPassword"  class="span3" placeholder="请输入密码"  errormsg="密码为6-20位" nullmsg="请填写密码" datatype="*6-20" name="password">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="inputPassword">确认密码</label>
-            <div class="controls">
-              <input type="password" id="inputPassword" class="span3" placeholder="请再次输入密码" recheck="password" errormsg="您两次输入的密码不一致" nullmsg="请填确认密码" datatype="*" name="repassword">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="inputEmail">邮箱</label>
-            <div class="controls">
-              <input type="text" id="inputEmail" class="span3" placeholder="请输入电子邮件"  ajaxurl="/member/checkUserEmailUnique.html" errormsg="请填写正确格式的邮箱" nullmsg="请填写邮箱" datatype="e" value="" name="email">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="inputPassword">验证码</label>
-            <div class="controls">
-              <input type="text" id="inputPassword" class="span3" placeholder="请输入验证码"  errormsg="请填写5位验证码" nullmsg="请填写验证码" datatype="*5-5" name="verify">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label"></label>
-            <div class="controls">
-                <img class="verifyimg reloadverify" alt="点击切换" src="{:U('verify')}" style="cursor:pointer;">
-            </div>
-            <div class="controls Validform_checktip text-warning"></div>
-          </div>
-          <div class="control-group">
-            <div class="controls">
-              <button type="submit" class="btn">注 册</button>
-            </div>
-          </div>
-        </form>
-	</div>
-</section>
 
 </block>
 
-<block name="side"> </block>
 <block name="script">
 	<script type="text/javascript">
-    	$(document)
+        (function(){
+            var ThinkPHP = window.Think = {
+                "ROOT"   : "", //当前网站地址
+                "APP"    : "", //当前项目地址
+                "PUBLIC" : "/Public", //项目公共目录地址
+                "DEEP"   : "/", //PATHINFO分割符
+                "MODEL"  : ["2", "", "html"],
+                "VAR"    : ["m", "c", "a"]
+            }
+        })();
+
+
+        $(document)
 	    	.ajaxStart(function(){
 	    		$("button:submit").addClass("log-in").attr("disabled", true);
 	    	})

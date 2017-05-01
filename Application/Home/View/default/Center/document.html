@@ -1,0 +1,61 @@
+
+<extend name="Base/base"/>
+<block name="content">
+    <div class="container-fluid">
+        <div id="ajax-content">
+            <volist name="lists" id="list">
+                <div class="row noticeList">
+                    <a href="{$list['url']}">
+                        <div class="col-xs-2">
+                            <img class="img-rounded img-responsive" src="{$list['img']}" />
+                        </div>
+                        <div class="col-xs-10">
+                            <p class="title">{$list.title}</p>
+                            <p class="intro">{$list.description}</p>
+                            <p class="info">浏览: {$list.view} <span class="pull-right">{$list.create_time}</span> </p>
+                        </div>
+                    </a>
+                </div>
+            </volist>
+        </div>
+        <div class="text-center obtain">
+            <button class="btn btn-info ajax-page" >获取更多~~~</button>
+        </div>
+    </div>
+</block>
+<block name="script">
+<script type="text/javascript">
+    $(function(){
+        //p设置当前页默认为1代码加载完就执行
+        var p = 1;
+        //添加点击事件
+        $(".ajax-page").click(function(){
+            $.get("{:U('center/notice')}",{'p':p+1},function(data){
+                if (data.status == 1){
+                    p++;
+                    var html = '';
+                    $.each(data.info,function(i,v){
+                        html += '<div class="row noticeList">\
+                                    <a href="'+ v.url +'">\
+                                        <div class="col-xs-2">\
+                                            <img class="img-rounded img-responsive" src="'+ v.img +'" />\
+                                        </div>\
+                                        <div class="col-xs-10">\
+                                            <p class="title">'+ v.title +'</p>\
+                                            <p class="intro">'+ v.description +'</p>\
+                                            <p class="info">浏览: '+ v.view +' <span class="pull-right">'+ v.create_time +'</span> </p>\
+                                        </div>\
+                                    </a>\
+                                </div>';
+                    })
+                    //将html追加到ajax-content中
+                    $("#ajax-content").append(html);
+                }else{
+                    //没有数据了
+                    $(".obtain").find('button').replaceWith("没有更多啦~~~");
+                }
+            });
+        });
+    });
+</script>
+</block>

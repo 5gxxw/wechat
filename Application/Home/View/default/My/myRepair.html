@@ -1,0 +1,32 @@
+<extend name="Base/base"/>
+<block name="content">
+    <div class="container-fluid" id="content_list">
+        <volist name="lists" id="list">
+            <div class="row noticeList">
+                <a href="/Repair/detail/id/34.html">
+                    <div class="col-xs-3">
+                        <p class="title text-info ">报修人：{$list.name}</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p class="title">报修标题：{$list.address}</p>
+                    </div>
+                    <div class="col-xs-push-3">
+                        <p class="title text-danger">
+                            <if condition="$list['status'] EQ 0">
+                                未处理
+                            <elseif condition="$list['status'] EQ 1" />
+                                处理中
+                            <else />
+                                处理完成
+                            </if>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </volist>
+    </div>
+    <div class="text-center">
+        <button type="button" class="btn btn-info ajax-page">获取跟多~~~</button>
+    </div>
+
+</block>

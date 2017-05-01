@@ -10,17 +10,20 @@ use EasyWeChat\Foundation\Application;
 use Think\Controller;
 
 include './vendor/autoload.php'; // 引入 composer 入口文件
-class WechatController extends Controller
+class WechatController
 {
     public function index(){
-//        echo I('get.echostr');
+        echo 'echostr';
+        echo I('get.echostr');
         // 使用配置来初始化一个项目。
-        $app = new Application(C('WE_CHAT'));
 
-        $response = $app->server->serve();
-
-        // 将响应输出
-        $response->send(); // Laravel 里请使用：return $response;
+//        dump(C('WE_CHAT'));exit;
+//    $app = new Application(C('WE_CHAT'));
+//
+//    $response = $app->server->serve();
+//
+//    // 将响应输出
+//    $response->send(); // Laravel 里请使用：return $response;
 
     }
 
@@ -29,9 +32,9 @@ class WechatController extends Controller
 
 
     //网页授权回调地址
-    public function actionCallback()
+    public function Callback()
     {
-        $app = new Application(\Yii::$app->params['wechat']);
+        $app = new Application(C('WE_CHAT'));
         $oauth = $app->oauth;
         // 获取 OAuth 授权结果用户信息
         $user = $oauth->user();

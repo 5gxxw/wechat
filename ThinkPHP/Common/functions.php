@@ -1090,7 +1090,7 @@ function session($name,$value='') {
         }
         // 启动session
         if(C('SESSION_AUTO_START'))  session_start();
-    }elseif('' === $value){ 
+    }elseif('' === $value){
         if(0===strpos($name,'[')) { // session 操作
             if('[pause]'==$name){ // 暂停session
                 session_write_close();

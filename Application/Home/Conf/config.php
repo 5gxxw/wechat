@@ -111,8 +111,8 @@ return array(
          */
         'app_id'  => 'wx41f0f1a601dd4894',         // AppID
         'secret'  => '5daaab71b4dd52241aa3314faf2ce9c7',     // AppSecret
-        'token'   => 'wechat',          // Token
-        'aes_key' => 'EncodingAESKey',                    // EncodingAESKey，安全模式下请一定要填写！！！
+        'token'   => 'Property',          // Token
+        'aes_key' => 'Encoding',                    // EncodingAESKey，安全模式下请一定要填写！！！
         /**
          * 日志配置
          *
@@ -159,4 +159,20 @@ return array(
             //'verify' => false, // 关掉 SSL 认证（强烈不建议！！！）
         ],
     ],
+
+    /* 后台错误页面模板 */
+    'TMPL_ACTION_ERROR'     =>  MODULE_PATH.'View/default/Public/error.html', // 默认错误跳转对应的模板文件
+    'TMPL_ACTION_SUCCESS'   =>  MODULE_PATH.'View/default/Public/success.html', // 默认成功跳转对应的模板文件
+
+    /* 页面静态化 */
+    'HTML_CACHE_ON'     =>    true, // 开启静态缓存
+    'HTML_CACHE_TIME'   =>    60,   // 全局静态缓存有效期（秒）
+    'HTML_FILE_SUFFIX'  =>    '.html', // 设置静态缓存文件后缀
+    'HTML_CACHE_RULES'  =>     array(  // 定义静态缓存规则
+        //'静态地址'    =>     array('静态规则', '有效期', '附加规则'),
+        'Index:index' => ['{:module}/{:controller}_{:action}',24*3600],//缓存首页
+    ),
+
+    //开启调试模式
+    'SHOW_ERROR_MSG'        =>  true,
 );

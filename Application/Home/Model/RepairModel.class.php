@@ -22,8 +22,14 @@ class RepairModel extends Model
         ['number','rand',1,'callback'],//新增的时候自动添加时间
         ['create_time',NOW_TIME,self::MODEL_INSERT],//新增的时候自动添加时间
         ['status',0],//新增的时候自动将状态改为0
-
+        ['uid','uid',1,'callback'],//新增的时候自动将状态改为0
     ];
+
+    //保存登录用户id
+    public function uid()
+    {
+        return $_SESSION['onethink_home']['user_auth']['uid'];
+    }
 
     public function rand(){
         return md5(rand(1000,9999));

@@ -23,6 +23,7 @@ class UserController extends HomeController {
 
 	/* 注册页面 */
 	public function register($username = '', $password = '', $repassword = '', $email = '', $verify = ''){
+
         if(!C('USER_ALLOW_REGISTER')){
             $this->error('注册已关闭');
         }
@@ -48,7 +49,7 @@ class UserController extends HomeController {
 			}
 
 		} else { //显示注册表单
-			$this->display();
+			$this->display('register');
 		}
 	}
 

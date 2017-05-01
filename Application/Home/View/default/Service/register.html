@@ -1,0 +1,36 @@
+<extend name="Base/base"/>
+<block name="content">
+    <div class="container-fluid">
+        <form method="post" action="{:U()}">
+            <div class="form-group">
+                <label>您的姓名(必填):</label>
+                <input type="text" class="form-control" name="name" />
+            </div>
+            <div class="form-group">
+                <label>你的房号(必填):</label>
+                <input type="text" class="form-control"  name="room_number" />
+            </div>
+            <div class="form-group">
+                <label>您与业主的关系(必填):</label>
+                <div class="controls">
+                    <select name="relation">
+                        <foreach name="relation" item="vo">
+                            <option value="{$key}" >{$vo}</option>
+                        </foreach>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>联系电话(必填):</label>
+                <input type="text" class="form-control" name="tel"/>
+            </div>
+            <div class="form-group">
+                <label>身份证号码(必填):</label>
+                <input type="text" class="form-control" name="card_id"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary onlineBtn">确认提交</button>
+            </div>
+        </form>
+    </div>
+</block>

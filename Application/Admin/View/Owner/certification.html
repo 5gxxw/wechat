@@ -1,0 +1,94 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>业主认证</h2>
+    </div>
+
+    <div class="cf">
+        <a class="btn" href="{:U('add')}">新 增</a>
+        <!--<a class="btn" href="javascript:;">删 除</a>-->
+        <!--<button class="btn list_sort" url="{:U('sort',array('pid'=>I('get.pid',0)),'')}">排序</button>-->
+    </div>
+
+    <div class="data-table table-striped">
+        <table>
+            <thead>
+            <tr>
+                <th class="row-selected">
+                    <input class="checkbox check-all" type="checkbox">
+                </th>
+                <th>姓名</th>
+                <th>房号</th>
+                <th>与业主的关系</th>
+                <th>联系电话</th>
+                <th>身份证号</th>
+                <th>认证时间</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <notempty name="list">
+                <volist name="list" id="vo">
+                    <tr>
+                        <td><input class="ids row-selected" type="checkbox" name="" id="" value="{$vo['id']}"> </td>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.room_number}</td>
+                        <td>{$vo.relation}</td>
+                        <td>{$vo.tel}</td>
+                        <td>{$vo.card_id}</td>
+                        <td>{$vo.create_time|time_format}</td>
+                        <td>
+                            <switch name="vo.status">
+                                <case value="2">审核通过</case>
+                                <case value="1">待审核</case>
+                            </switch>
+                        </td>
+                        <td>
+                            <eq name="vo.status" value="1">
+                            <a title="未审核" href="{:U('auditing?id='.$vo['id'])}" class="ajax-get">未审核</a>
+                            </eq>
+                            <a title="编辑" href="{:U('edit?id='.$vo['id'])}">编辑</a>
+                            <a class="confirm ajax-get" title="删除" href="{:U('del?id='.$vo['id'])}">删除</a>
+                        </td>
+                    </tr>
+                </volist>
+                <else/>
+                <td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td>
+            </notempty>
+            </tbody>
+        </table>
+    </div>
+    <!-- 分页 -->
+    <div class="page">
+        {$_page}
+    </div>
+
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        $(function() {
+            //点击排序
+            $('.list_sort').click(function(){
+                var url = $(this).attr('url');
+                var ids = $('.ids:checked');
+                var param = '';
+                if(ids.length > 0){
+                    var str = new Array();
+                    ids.each(function(){
+                        str.push($(this).val());
+                    });
+                    param = str.join(',');
+                }
+
+                if(url != undefined && url != ''){
+                    window.location.href = url + '/ids/' + param;
+                }
+            });
+
+
+        });
+    </script>
+</block>
