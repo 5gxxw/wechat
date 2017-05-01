@@ -2,125 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b56d4a7c-6216-4c2a-80e5-c02718c3cd3d" name="默认" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/Controller/OwnerController.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/Controller/RentalController.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/Model/OwnerCertificationModel.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/Model/RentalModel.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/View/Owner/certification.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/View/Owner/edit.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/View/Rental/edit.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/View/Rental/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/Controller/CheckController.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/Controller/FindController.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/Controller/ServiceController.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/Model/OwnerCertificationModel.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/View/default/Center/detailed.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/View/default/Center/document.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/View/default/Center/rental.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/View/default/Find/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/View/default/My/myRepair.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/View/default/Public/error.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/View/default/Public/success.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/View/default/Service/about.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/View/default/Service/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/View/default/Service/life.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/View/default/Service/register.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Home/View/default/Center/notice.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/01b9666b2ed3b20a65495dff2ba42a52.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/0b569c8b223da3410839977f41808d4e.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/0e570eb4d82317bfe00583e8398288ce.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/113279d63d1b5e68b3214ba4e71a42d5.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/1347aaf43ea5dc79f3c453a6997d718b.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/1a29341587f46f16df4f5ba698e28d07.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/3c5566b2bfbf6ef00ac5366ba47246fe.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/4541d9c6db732cb46ce1c85dde20958e.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/4e1f0ee1a12a8dbb63343fe9e6a3f60d.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/50122fa2bddc1c4a2751081bf5f0b5dc.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/5f653e0218b1b60ae96f72a10f365938.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/62c9d7a522bd79c224f73a09e7c08993.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/65a5c81e2e43da849a7b345f7d20293b.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/65e605872ed5d34210f5b33beb13f5a3.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/6a695c0f870684e6d3df4373fa9ce582.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/70619b898e29e62c68b1d45593e161aa.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/761055de2f430bef08441163fbb8bda7.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/79bde46336f7088c2c4092b8642fe931.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/7a4184ffe8f804b12b2e7f8851dd8f7d.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/7d0075949add4cd5d6a0cca868325de8.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/93312e15ebdcf0745d719bb921769759.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/96dac7fe5323e8d5b51df019cac80cf2.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/9bb5e7ead1bbec7c3d970a481af28a6e.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/9bfef0f9f473c596f668b6c9a32bfd5c.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/9cbe2ce630b3f2a030f0076f4d17e323.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/a2687d4c008de26902ac38bda01195da.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/a77aa83c121d51b6cd699ea2b65451f6.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/b2958c8c8e586a48faa6c68ada732ac5.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/b595b808c2ebeeeb0478ffc30bb4e87a.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/b956215329b6f9aca22277599a4efdfc.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/c2cc8605870506ffc9a2d62e5cb59782.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/c340e9208354d8c4aad2c2f5069d1c95.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/c871bba49b6ba63f385a8967a426d0b0.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/d39e51d7c14c2b28a9a0e8a9fb7b6dba.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/dfed54471f23c5cc0f29d10cfac5ae98.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/e16cf278f1c326e72baf6415dbd5ab87.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/e915606f4666252950bacf14eab57f78.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/fea6ecfa909155b3a58e2631a09f55e1.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/ffb703e244a3b60bccfabb187e72a14c.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Home/003db6be651d312b2291e1a7dea9c9ce.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Home/28243f0af3e120ae098789486dd64f7b.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Home/2f5163c126e3db44ab4ef6006841f0a2.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Home/2fa3bd5d90628bf8a9337d0b46238574.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Home/5231e2bbdb7b9edc1f0f29f2bbab2a6e.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Home/769e70f2e46f34ceb60619bbda5e4691.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Home/79d6c86ea304e276e09507d52c8f4d52.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Home/9a9e4227b3c0b552fe0f4e7e528d8737.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Home/9b704f822dd650dff93d491c8d637394.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Home/b171d71961885d3bf0f7a9b2e0867b01.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Home/bb6aaeaefbe9497eaea43926484fedd5.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Home/d3a705807801fe71ce17625863be012a.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Install/10930f5f1cfee0a18170b1bf78b206ef.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Install/1afb52484deba53b245c0d598473848f.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Install/6236e16d6fb6c3909456d5deb3fb62de.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Install/c6bbce5b1f1dcf027c8ceb5cf5141b65.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Cache/Install/df9295ff545a4980babae2637965a9bc.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.action.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.actionlog.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.addons.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.attachment.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.authgroup.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.blog.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.category.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.channel.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.config.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.document.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.hooks.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.member.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.menu.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.model.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.repair.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Data/_fields/onethink.ucentermember.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Logs/17_04_25.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Logs/17_04_26.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Logs/17_04_27.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Temp/2bb202459c30a1628513f40ab22fa01a.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Temp/4e819c837d54a6ed09abc77a8560a66f.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Temp/865e8245bc0c525aa4a48bfb433d7c3e.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Temp/8badceef8761e1f2fa41d8bf7e2cdf39.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Temp/95a1fe934b68ebfee8468bf0bc4f0000.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Runtime/Temp/cbc58bd3cdec352c980d0ad729b5c219.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/Conf/config.php" afterPath="$PROJECT_DIR$/Application/Home/Conf/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/Controller/CenterController.class.php" afterPath="$PROJECT_DIR$/Application/Home/Controller/CenterController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/Controller/MyController.class.php" afterPath="$PROJECT_DIR$/Application/Home/Controller/MyController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/Controller/UserController.class.php" afterPath="$PROJECT_DIR$/Application/Home/Controller/UserController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/Controller/WechatController.class.php" afterPath="$PROJECT_DIR$/Application/Home/Controller/WechatController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/Model/RepairModel.class.php" afterPath="$PROJECT_DIR$/Application/Home/Model/RepairModel.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/View/default/Base/base.html" afterPath="$PROJECT_DIR$/Application/Home/View/default/Base/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/View/default/Center/detail.html" afterPath="$PROJECT_DIR$/Application/Home/View/default/Center/detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/View/default/My/index.html" afterPath="$PROJECT_DIR$/Application/Home/View/default/My/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/View/default/User/login.html" afterPath="$PROJECT_DIR$/Application/Home/View/default/User/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/View/default/User/register.html" afterPath="$PROJECT_DIR$/Application/Home/View/default/User/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkPHP/Common/functions.php" afterPath="$PROJECT_DIR$/ThinkPHP/Common/functions.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -147,11 +29,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyController.class.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MyController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/Home/Controller/MyController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+            <state relative-caret-position="420">
+              <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheckController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Home/Controller/CheckController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -185,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="success.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="success.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Home/View/default/Public/success.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="45" column="40" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="40" />
+            <state relative-caret-position="464">
+              <caret line="44" column="16" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -198,8 +90,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Home/View/default/My/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="18" column="62" lean-forward="false" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
+            <state relative-caret-position="42">
+              <caret line="1" column="22" lean-forward="true" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -302,10 +194,10 @@
         <option value="$PROJECT_DIR$/Application/Home/Model/OwnerCertificationModel.class.php" />
         <option value="$PROJECT_DIR$/Application/Home/Controller/ServiceController.class.php" />
         <option value="$PROJECT_DIR$/Application/Home/View/default/Base/base.html" />
-        <option value="$PROJECT_DIR$/Application/Home/View/default/My/index.html" />
-        <option value="$PROJECT_DIR$/Application/Home/Controller/MyController.class.php" />
         <option value="$PROJECT_DIR$/Application/Home/Controller/CenterController.class.php" />
         <option value="$PROJECT_DIR$/Application/Home/View/default/Public/error.html" />
+        <option value="$PROJECT_DIR$/Application/Home/Controller/MyController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Home/View/default/My/index.html" />
       </list>
     </option>
   </component>
@@ -505,6 +397,66 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="View" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="default" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="oneThink" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="oneThink" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Home" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="View" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="default" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Base" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="oneThink" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="oneThink" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Home" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -646,12 +598,12 @@
       <workItem from="1493176985506" duration="30877000" />
       <workItem from="1493254354164" duration="40258000" />
       <workItem from="1493340150166" duration="26565000" />
-      <workItem from="1493436628423" duration="57404000" />
+      <workItem from="1493436628423" duration="58902000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="174291000" />
+    <option name="totallyTimeSpent" value="175789000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2" y="0" width="1918" height="1046" extended-state="0" />
@@ -689,22 +641,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/ArticleController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="389" column="33" lean-forward="false" selection-start-line="389" selection-start-column="33" selection-end-line="389" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Article/add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1344">
-          <caret line="37" column="36" lean-forward="true" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/PHP/1229PHP/20170427-onethink-DAY02/resources/项目前台模板/static/index/about.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
@@ -1053,22 +989,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/View/default/My/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="18" column="62" lean-forward="false" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/MyController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Home/Controller/ServiceController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="734">
@@ -1116,8 +1036,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Home/View/default/Public/success.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="45" column="40" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="40" />
+        <state relative-caret-position="464">
+          <caret line="44" column="16" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Home/View/default/Base/common.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/CheckController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Home/View/default/My/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="1" column="22" lean-forward="true" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Home/Controller/MyController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
           <folding />
         </state>
       </provider>
