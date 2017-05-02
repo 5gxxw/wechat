@@ -9,7 +9,7 @@
 
 namespace Home\Controller;
 use User\Api\UserApi;
-
+include './vendor/autoload.php'; // 引入 composer 入口文件
 /**
  * 用户控制器
  * 包括用户中心，用户登录及注册
@@ -82,7 +82,6 @@ class UserController extends HomeController {
 				}
 				$this->error($error);
 			}
-
 		} else { //显示登录表单
 			$this->display();
 		}

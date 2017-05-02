@@ -7,26 +7,65 @@ namespace Home\Controller;
 
 
 use EasyWeChat\Foundation\Application;
-use Think\Controller;
+use Home\Service\WechatService;
 
 include './vendor/autoload.php'; // 引入 composer 入口文件
-class WechatController
+class WechatController extends HomeController
 {
     public function index(){
-        echo 'echostr';
-        echo I('get.echostr');
-        // 使用配置来初始化一个项目。
+        $app = new Application(C('WE_CHAT'));
+        // 从项目实例中得到服务端应用实例。
+        $server = $app->server;
+        $server->setMessageHandler(function ($message) {
+            // $message->FromUserName // 用户的 openid
+            // $message->MsgType // 消息类型：event, text....
+            return "您好！欢迎关注我!";
 
-//        dump(C('WE_CHAT'));exit;
-//    $app = new Application(C('WE_CHAT'));
-//
-//    $response = $app->server->serve();
-//
-//    // 将响应输出
-//    $response->send(); // Laravel 里请使用：return $response;
+            switch ($message->MsgType) {
+                case 'event':
+                    return '收到事件消息';
+                    break;
+                case 'text':
+                    return '收到文字消息';
+                    break;
+                case 'image':
+                    return '收到图片消息';
+                    break;
+                case 'voice':
+                    return '收到语音消息';
+                    break;
+                case 'video':
+                    return '收到视频消息';
+                    break;
+                case 'location':
+                    return '收到坐标消息';
+                    break;
+                case 'link':
+                    return '收到链接消息';
+                    break;
+                // ... 其它消息
+                default:
+                    return '收到其它消息';
+                    break;
+            }
+
+        });
+        $response = $server->serve();
+        $response->send(); // Laravel 里请使用：return $response;
+
 
     }
 
+
+    public function bang()
+    {
+        $wechat = new WechatService();
+        //获取session中的openid,如果没有就获取openid,保存到session
+        if (!session('openid')){
+           $wechat->getOpenid(U());
+        }
+        dump(session('openid'));
+    }
 
 
 
@@ -54,36 +93,26 @@ class WechatController
     /**
      * 添加菜单
      */
-    public function actionAddMenu()
+    public function addMenu()
     {
         //获取菜单模块实例
-        $app = new Application(\Yii::$app->params['wechat']);
+        $app = new Application(C('WE_CHAT'));
         $menu = $app->menu;
 
         //添加普通菜单
         $buttons = [
             [
                 "type" => "click",
-                "name" => "热卖商品",
-                "key"  => "V1001_HOS"
+                "name" => "源码时代",
+                "key"  => "V1001_YUAN"
             ],
             [
-                "name"       => "个人中心",
+                "name"       => "菜单",
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "我的订单",
-                        "url"  => Url::to(['we-chat/my-order'],true)
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "我的信息",
-                        "url"  => Url::to(['we-chat/my-info'],true),
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "绑定账号",
-                        "url" => Url::to(['we-chat/bang'],true)
+                        "name" => "物业管理",
+                        "url"  => U("Index/index"),
                     ],
                 ],
             ],

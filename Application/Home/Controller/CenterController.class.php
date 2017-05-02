@@ -50,9 +50,10 @@ class CenterController extends HomeController
             $lists = M('apply')->join('document ON apply.article_id = document.id')->where(['apply.uid'=>$uid])->page(I('p',1),C('LIST_ROWS'))->select();
         }else{
             //实例化文章信息的模型对象
-            $map['category_id'] = $category_id;
+            $map['category_id'] = $category_id ? $category_id : I('get.category_id');
             $map['status'] = ['EGT',0];
             $lists = M('document')->where($map)->page(I('p',1),C('LIST_ROWS'))->select();
+
         }
         //将时间,图片在控制器中处理
         foreach($lists as &$list){

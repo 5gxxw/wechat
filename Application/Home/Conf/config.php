@@ -133,8 +133,8 @@ return array(
          * callback：OAuth授权完成后的回调页地址
          */
         'oauth' => [
-            'scopes'   => ['snsapi_base'],
-            'callback' => 'weChat/callback',
+            'scopes'   => ['snsapi_userinfo'],
+            'callback' => 'Wechat/callback',
         ],
         /**
          * 微信支付
@@ -155,7 +155,7 @@ return array(
          * 更多请参考： http://docs.guzzlephp.org/en/latest/request-options.html
          */
         'guzzle' => [
-            'timeout' => 3.0, // 超时时间（秒）
+            'timeout' => 6.0, // 超时时间（秒）
             //'verify' => false, // 关掉 SSL 认证（强烈不建议！！！）
         ],
     ],

@@ -6,7 +6,7 @@
 			{$info['id']?'编辑':'新增'}小区租售
 		</h2>
 	</div>
-	<form action="{:U()}" method="post" class="form-horizontal">
+	<form action="{:U()}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		<!--<input type="hidden" name="pid" value="{$pid}">-->
 		<div class="form-item">
 			<label class="item-label">标题<span class="check-tips">（请填写文章的标题）</span></label>
@@ -44,6 +44,13 @@
 			</div>
 		</div>
 		<div class="form-item">
+			<label class="item-label">上传封面<span class="check-tips">（请上传一张封面图片）</span></label>
+			<div class="controls">
+				<input type="file" id="upload_picture_cover_id">
+				<input type="hidden" name="cover" id="cover_id_cover_id"/>
+			</div>
+		</div>
+		<div class="form-item">
 			<label class="item-label">内容<span class="check-tips">（请填写内容）</span></label>
 			<div class="controls">
 				<label class="textarea input-large"><textarea id="auth-description" type="text" name="content">{$info.content|default=''}</textarea></label>
@@ -60,5 +67,41 @@
 <script type="text/javascript" charset="utf-8">
 	//导航高亮
 	highlight_subnav('{:U('index')}');
+
+	//上传图片
+		/* 初始化上传插件 */
+	$("#upload_picture_cover_id").uploadify({
+		"height"          : 30,
+		"swf"             : "/Public/static/uploadify/uploadify.swf",
+		"fileObjName"     : "download",
+		"buttonText"      : "上传图片",
+		"uploader"        : "/index.php/Admin/File/uploadPicture/session_id/4ob8vuapn9rnbum98nv97230q4.html",
+		"width"           : 120,
+		'removeTimeout'	  : 1,
+		'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+		"onUploadSuccess" : uploadPicturecover_id,
+		'onFallback' : function() {
+			alert('未检测到兼容版本的Flash.');
+		}
+	});
+function uploadPicturecover_id(file, data){
+	var data = $.parseJSON(data);
+	var src = '';
+	if(data.status){
+		$("#cover_id_cover_id").val(data.id);
+		src = data.url || '' + data.path
+		$("#cover_id_cover_id").parent().find('.upload-img-box').html(
+			'<div class="upload-pre-item"><img src="' + src + '"/></div>'
+		);
+	} else {
+		updateAlert(data.info);
+		setTimeout(function(){
+			$('#top-alert').find('button').click();
+			$(that).removeClass('disabled').prop('disabled',false);
+		},1500);
+	}
+}
+
 </script>
+
 </block>

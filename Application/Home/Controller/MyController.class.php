@@ -30,7 +30,7 @@ class MyController extends CheckController
         //根据uid查询报修表
         $map['uid'] = $user_info['uid'];
         $map['status'] = ['EGT',0];
-        $lists = M('repair')->where($map)->select();
+        $lists = M('Repair')->where($map)->select();
 
         $this->assign('lists',$lists);
         $this->display();

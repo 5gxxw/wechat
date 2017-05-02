@@ -1,4 +1,3 @@
-
 <extend name="Base/base"/>
 <block name="content">
     <div class="container-fluid">
@@ -30,7 +29,9 @@
         var p = 1;
         //添加点击事件
         $(".ajax-page").click(function(){
-            $.get("{:U('center/notice')}",{'p':p+1},function(data){
+            var category_id = {:I('get.category_id')};
+            $.get("{:U('Center/document')}",{p:p+1,category_id:category_id},function(data){
+                console.debug(data);
                 if (data.status == 1){
                     p++;
                     var html = '';
