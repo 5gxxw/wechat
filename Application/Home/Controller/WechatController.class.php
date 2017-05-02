@@ -63,7 +63,7 @@ class WechatController extends HomeController
         $wechat = new WechatService();
         //获取session中的openid,如果没有就获取openid,保存到session
         if (!session('openid')){
-            $back = U("Wechat/bang",'','',true);
+            $back = 'Wechat/bang';
            $wechat->getOpenid($back);
         }
         $openid = session('openid');
