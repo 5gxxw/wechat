@@ -79,6 +79,7 @@ class MemberModel extends Model{
             'login'           => array('exp', '`login`+1'),
             'last_login_time' => NOW_TIME,
             'last_login_ip'   => get_client_ip(1),
+            'openid'   => session('openid'),
         );
         $this->save($data);
 

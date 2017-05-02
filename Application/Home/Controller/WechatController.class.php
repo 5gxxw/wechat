@@ -8,6 +8,7 @@ namespace Home\Controller;
 
 use EasyWeChat\Foundation\Application;
 use Home\Service\WechatService;
+use User\Api\UserApi;
 
 include './vendor/autoload.php'; // 引入 composer 入口文件
 class WechatController extends HomeController
@@ -62,18 +63,19 @@ class WechatController extends HomeController
         $wechat = new WechatService();
         //获取session中的openid,如果没有就获取openid,保存到session
         if (!session('openid')){
-//            $back = U("Wechat/bang",'','',true);
-//           $wechat->getOpenid($back);
-
-            //初始化配置
-            $app = new Application(C('WE_CHAT'));
-            //获取授权回调地址路径
-            $response = $app->oauth->redirect();
-            //将当前路由保存到session中方便授权回调地址跳回
-            session('back',U('Wechat/bang'));
-            $response->send();
+            $back = U("Wechat/bang",'','',true);
+           $wechat->getOpenid($back);
         }
-        dump(session('openid'));
+        $openid = session('openid');
+        //根据openid到数据库查询
+        $member = M('ucenter_member')->getByOpenid($openid);
+        if ($member){
+            //跳转到我的
+            $this->redirect(U('My/index'));
+        }else{
+            //跳转到登录页面进行登录
+            $this->redirect(U('User/login'));
+        }
     }
 
 
