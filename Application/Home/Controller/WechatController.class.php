@@ -71,6 +71,7 @@ class WechatController extends HomeController
         $member = M('member')->getByOpenid($openid);
         if ($member){
             //登录
+            dump($member);exit;
             if($member->login($member['uid'])){ //登录用户
                 //TODO:跳转到登录前页面
                 //登录成功后跳转到我的
