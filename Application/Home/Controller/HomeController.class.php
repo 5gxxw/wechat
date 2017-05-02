@@ -40,7 +40,7 @@ class HomeController extends Controller {
 		if(is_login()){
 		    return is_login();
         }else{
-		    $this->redirect(U('Wechat/bang'));
+		    $this->redirect('Wechat/bang');
         }
 
 

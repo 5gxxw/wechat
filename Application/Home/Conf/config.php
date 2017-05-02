@@ -133,8 +133,8 @@ return array(
          * callback：OAuth授权完成后的回调页地址
          */
         'oauth' => [
-            'scopes'   => ['snsapi_userinfo'],
-            'callback' => 'Wechat/callback',
+            'scopes'   => ['snsapi_base'],
+            'callback' => 'index.php/Home/Wechat/callback',
         ],
         /**
          * 微信支付

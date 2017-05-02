@@ -62,7 +62,16 @@ class WechatController extends HomeController
         $wechat = new WechatService();
         //获取session中的openid,如果没有就获取openid,保存到session
         if (!session('openid')){
-           $wechat->getOpenid(U());
+//            $back = U("Wechat/bang",'','',true);
+//           $wechat->getOpenid($back);
+
+            //初始化配置
+            $app = new Application(C('WE_CHAT'));
+            //获取授权回调地址路径
+            $response = $app->oauth->redirect();
+            //将当前路由保存到session中方便授权回调地址跳回
+            session('back',U('Wechat/bang'));
+            $response->send();
         }
         dump(session('openid'));
     }
@@ -71,22 +80,23 @@ class WechatController extends HomeController
 
 
     //网页授权回调地址
-    public function Callback()
+    public function callback()
     {
         $app = new Application(C('WE_CHAT'));
         $oauth = $app->oauth;
         // 获取 OAuth 授权结果用户信息
         $user = $oauth->user();
         //将用户的openid保存到session
-        \Yii::$app->session->set('openid',$user->id);
+        session('openid',$user->id);
+        //session('wechat_user',$user->toArray());
         //跳回请求地址
-        if(\Yii::$app->session->has('back')){
+        if(session('back')){
             //保存到变量
-            $back = \Yii::$app->session->get('back');
+            $back = session('back');
             //清理session中的back
-            \Yii::$app->session->remove('back');
+            session('back',null);
             //跳回
-            return $this->redirect([$back]);
+            $this->redirect($back);
         }
     }
 
@@ -112,7 +122,7 @@ class WechatController extends HomeController
                     [
                         "type" => "view",
                         "name" => "物业管理",
-                        "url"  => U("Index/index"),
+                        "url"  => U("Index/index",'','',true),
                     ],
                 ],
             ],
