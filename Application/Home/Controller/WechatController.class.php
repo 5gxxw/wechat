@@ -71,10 +71,10 @@ class WechatController extends HomeController
         $member = M('ucenter_member')->getByOpenid($openid);
         if ($member){
             //跳转到我的
-            $this->redirect(U('My/index'));
+            $this->redirect('My/index');
         }else{
             //跳转到登录页面进行登录
-            $this->redirect(U('User/login'));
+            $this->redirect('User/login');
         }
     }
 
