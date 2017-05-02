@@ -17,6 +17,6 @@ class CheckController extends HomeController
     {
         parent::_initialize(); // TODO: 相当于构造方法,会自动调用
 
-        $this->login();
+        $this->login('My/index');
     }
 }

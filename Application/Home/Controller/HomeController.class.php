@@ -32,14 +32,20 @@ class HomeController extends Controller {
         }
     }
 
-	/* 用户登录检测 */
-	protected function login(){
+    /**
+     * 用户登录检测
+     * @param $rule .传入路由,方便跳回.
+     * @return int
+     */
+	protected function login($rule){
 		/* 用户登录检测 */
 		//is_login() || $this->error('您还没有登录，请先登录！', U('User/login'));
 
 		if(is_login()){
 		    return is_login();
         }else{
+		    //将路由保存到session
+            session('return',$rule);
 		    $this->redirect('Wechat/bang');
         }
 

@@ -31,9 +31,8 @@ class CenterController extends HomeController
                 $this->error($repair->getError());
             }
         }else{
-
             //判断用户是否登录
-            $this->login();
+            $this->login('Center/repair');
             $this->display();
         }
     }
@@ -98,10 +97,13 @@ class CenterController extends HomeController
     /* 申请参与活动  $id为文章的id */
     public function apply($id)
     {
+        //判断是否登录
+        if (!is_login()){
+            $this->login('Center/apply?id='.$id);
+        }
         //获取当前的用户id,文章id,写入数据表
-        $user = I('session.onethink_home');
-        $user_info = $user['user_auth'];
-        $data['uid'] = $user_info['uid'];
+
+        $data['uid'] = is_login();
         //获取文章id
         $data['article_id'] = (int)I('get.id');
         $data['create_time'] = time();

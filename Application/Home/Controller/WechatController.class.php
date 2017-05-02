@@ -74,8 +74,8 @@ class WechatController extends HomeController
             //登录
             if($member->login($info['uid'])){ //登录用户
                 //TODO:跳转到登录前页面
-                //登录成功后跳转到我的
-                $this->success('登录成功！',U('My/index'));
+                //登录成功后跳转到之前的页面
+                $this->success('登录成功！',U(session('return')));
             } else {
                 $this->error($member->getError());
             }
