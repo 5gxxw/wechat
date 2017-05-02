@@ -68,11 +68,11 @@ class WechatController extends HomeController
         }
         $openid = session('openid');
         //根据openid到数据库查询
-        $member = M('member')->getByOpenid($openid);
-        if ($member){
+        $member = D('Member');
+        $info = $member->getByOpenid($openid);
+        if ($info){
             //登录
-            dump($member);exit;
-            if($member->login($member['uid'])){ //登录用户
+            if($member->login($info['uid'])){ //登录用户
                 //TODO:跳转到登录前页面
                 //登录成功后跳转到我的
                 $this->success('登录成功！',U('My/index'));
