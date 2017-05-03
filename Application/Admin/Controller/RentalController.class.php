@@ -69,7 +69,7 @@ class RentalController extends AdminController
                     $this->error($details->getError());
                 }
                 //保存租售内容,得到id
-                if (!$details->detail_id = $details->add()){
+                if (!$rental->detail_id = $details->add()){
                     $this->error('内容添加失败');
                 }
                 //保存租售信息
