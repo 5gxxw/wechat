@@ -55,7 +55,7 @@
 				<input type="hidden" name="cover_id" id="cover_id_cover_id"/>
 				<div class="upload-img-box">
 					<notempty name="info['cover_id']">
-						<div class="upload-pre-item"><img src="{info['cover_id']|get_cover='path'}"/></div>
+						<div class="upload-pre-item"><img src="{$info['cover_id']|get_cover='path'}"/></div>
 					</notempty>
 				</div>
 			</div>
@@ -105,13 +105,12 @@
 			<label class="item-label">内容<span class="check-tips">（请填写内容）</span></label>
 			<!-- 使用百度编辑器 -->
 			<label class="textarea">
-				<textarea name="content"></textarea>
+				<textarea name="content">{$info.content|default=''}</textarea>
 				{:hook('adminArticleEdit', array('name'=>content,'value'=>"$info.content|default=''"))}
 			</label>
-
 		</div>
 		<div class="form-item">
-			<input type="hidden" name="id" value="{$info.id|default=''}">
+			<input type="hidden" name="id" value="{$info['id']|default=''}">
 			<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
 			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
 		</div>

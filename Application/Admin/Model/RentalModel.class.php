@@ -21,7 +21,7 @@ class RentalModel extends Model
         ['price','currency','请填写价格',self::MUST_VALIDATE],
         ['intro','require','请填写100字以内简介',self::MUST_VALIDATE],
         ['status','require','请填写状态',self::MUST_VALIDATE],
-        ['cover_id','require','请填写上传封面id',self::MUST_VALIDATE],
+        //['cover_id','require','请填写上传封面id',self::MUST_VALIDATE],
     ];
 
     //自动完成

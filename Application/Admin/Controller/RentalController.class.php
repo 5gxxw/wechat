@@ -54,36 +54,36 @@ class RentalController extends AdminController
     }
 
     //编辑
-    public function edit($id)
+    public function edit($id = 0)
     {
         if (IS_POST){
             //实例化模型
             $rental = D('Rental');
             $data = $rental->create();
+
             if ($data){
                 //动态设置租售内容自动验证
                 $details = M('rental_details');
                 $rules = [['content','require','请填写内容',1]];
-                if (!$details->validate($rules)->create()){
+                $data = $details->validate($rules)->create();
+                if (!$data){
                     //验证失败
                     $this->error($details->getError());
                 }
                 //保存租售内容,得到id
-                if (!$rental->detail_id = $details->save()){
-                    $this->error('内容添加失败');
-                }
+                $details->save();
                 //保存租售信息
-                if ($rental->add()){
-                    $this->success('新增成功',U('index'));
+                if ($rental->save()){
+                    $this->success('编辑成功',U('index'));
                 }else{
-                    $this->error('新增失败');
+                    $this->error($rental->getError());
                 }
             }else{
                 $this->error($rental->getError());
             }
         }else{
             //根据id取出数据
-            $info = M('rental')->find($id);
+            $info = M('rental')->join('rental_details ON rental.detail_id = rental_details.id')->where(['rental.id'=>$id])->find();
             if ($info == null){
                 $this->error('数据未找到');
             }
