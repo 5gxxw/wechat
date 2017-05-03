@@ -51,32 +51,20 @@ class ServiceController extends HomeController
                     $this->display();
                 }
             }else{
-                $this->error('请先登录',U('User/login'));
+                //去登录
+                $this->login('Service/register');
             }
         }
     }
-
-    /**
-     * 生活小贴士
-     */
-    /* public function life($category_id = 0)
-    {
-        if (empty($category_id)){
-            $this->error('没有该分类');
-        }
-        //根据文章分类id查询出所有文章
-        $map['status'] = ['GT',0];
-        $map['category_id'] = $category_id;
-        $rows = M('document')->where($map)->select();
-        $this->assign($rows);
-        $this->display(T('Center/document'));
-    } */
 
     /**
      * 关于我们
      */
     public function about()
     {
+        //根据标识查询出关于我们的信息
+        $row = M('document')->join('document_article ON document.id = document_article.id')->where(['name'=>'about'])->limit(1)->find();
+        $this->assign('row',$row);
         $this->display();
     }
 }

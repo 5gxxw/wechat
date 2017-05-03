@@ -46,7 +46,13 @@ class CenterController extends HomeController
             $this->error('没有发现内容,请填写正确的分类');
         }
         if ($uid){
+            //根据用户id查询已经报名的活动
             $lists = M('apply')->join('document ON apply.article_id = document.id')->where(['apply.uid'=>$uid])->page(I('p',1),C('LIST_ROWS'))->select();
+        }elseif($category_id = 44){
+            //生活贴士(囊括了小区通知、便民服务、小区活动)
+            $map['category_id'] = ['IN',[40,41,42]];
+            $map['status'] = ['EGT',0];
+            $lists =M('document')->where($map)->page(I('p',1),C('LIST_ROWS'))->select();
         }else{
             //实例化文章信息的模型对象
             $map['category_id'] = $category_id ? $category_id : I('get.category_id');

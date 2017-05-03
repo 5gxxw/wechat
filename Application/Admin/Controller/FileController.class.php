@@ -58,13 +58,13 @@ class FileController extends AdminController {
      */
     public function uploadPicture(){
         //TODO: 用户登录检测
-
         /* 返回标准数据 */
         $return  = array('status' => 1, 'info' => '上传成功', 'data' => '');
 
         /* 调用文件上传组件上传文件 */
         $Picture = D('Picture');
         $pic_driver = C('PICTURE_UPLOAD_DRIVER');
+
         $info = $Picture->upload(
             $_FILES,
             C('PICTURE_UPLOAD'),

@@ -35,21 +35,23 @@ class PictureModel extends Model{
      * @return array           文件上传成功后的信息
      */
     public function upload($files, $setting, $driver = 'Local', $config = null){
+
+
         /* 上传文件 */
         $setting['callback'] = array($this, 'isFile');
+
 		$setting['removeTrash'] = array($this, 'removeTrash');
         $Upload = new Upload($setting, $driver, $config);
         $info   = $Upload->upload($files);
-
         if($info){ //文件上传成功，记录文件信息
             foreach ($info as $key => &$value) {
                 /* 已经存在文件记录 */
                 if(isset($value['id']) && is_numeric($value['id'])){
                     continue;
                 }
-
                 /* 记录文件信息 */
                 $value['path'] = substr($setting['rootPath'], 1).$value['savepath'].$value['savename'];	//在模板里的url路径
+
                 if($this->create($value) && ($id = $this->add())){
                     $value['id'] = $id;
                 } else {

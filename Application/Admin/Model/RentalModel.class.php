@@ -20,8 +20,8 @@ class RentalModel extends Model
         ['tel','/^[1][3,4,5,7,8]\d{9}$/','请填写正确格式的电话号码',self::MUST_VALIDATE],
         ['price','currency','请填写价格',self::MUST_VALIDATE],
         ['intro','require','请填写100字以内简介',self::MUST_VALIDATE],
-        ['content','require','请填写内容',self::MUST_VALIDATE],
-        ['status','require','请填写状态',self::MUST_VALIDATE]
+        ['status','require','请填写状态',self::MUST_VALIDATE],
+        ['cover_id','require','请填写上传封面id',self::MUST_VALIDATE],
     ];
 
     //自动完成

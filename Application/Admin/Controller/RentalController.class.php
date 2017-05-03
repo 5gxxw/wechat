@@ -26,6 +26,18 @@ class RentalController extends AdminController
             $rental = D('Rental');
             $data = $rental->create();
             if ($data){
+                //动态设置租售内容自动验证
+                $details = M('rental_details');
+                $rules = [['content','require','请填写内容',1]];
+                if (!$details->validate($rules)->create()){
+                    //验证失败
+                    $this->error($details->getError());
+                }
+                //保存租售内容,得到id
+                if (!$rental->detail_id = $details->add()){
+                    $this->error('内容添加失败');
+                }
+                //保存租售信息
                 if ($rental->add()){
                     $this->success('新增成功',U('index'));
                 }else{
@@ -45,20 +57,29 @@ class RentalController extends AdminController
     public function edit($id)
     {
         if (IS_POST){
-            //实例化模型对象
-            $repair = D('Rental');
-            //根据表单提交的post数据创建数据对象
-            $data = $repair->create();
+            //实例化模型
+            $rental = D('Rental');
+            $data = $rental->create();
             if ($data){
-                //修改
-                if($repair->save()){
-                    //记录行为
-                    $this->success('编辑成功',U('index'));
+                //动态设置租售内容自动验证
+                $details = M('rental_details');
+                $rules = [['content','require','请填写内容',1]];
+                if (!$details->validate($rules)->create()){
+                    //验证失败
+                    $this->error($details->getError());
+                }
+                //保存租售内容,得到id
+                if (!$rental->detail_id = $details->add()){
+                    $this->error('内容添加失败');
+                }
+                //保存租售信息
+                if ($rental->add()){
+                    $this->success('新增成功',U('index'));
                 }else{
-                    $this->error('编辑失败'.$repair->getError());
+                    $this->error('新增失败');
                 }
             }else{
-                $this->error($repair->getError());
+                $this->error($rental->getError());
             }
         }else{
             //根据id取出数据
